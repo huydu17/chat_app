@@ -1,0 +1,48 @@
+tắt các cổng đã chiếm trên nền tảng khác: fuser -k 3000/tcp
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "node ./server/server.js",
+    "dev": "nodemon ./server/server.js",
+    "client": "npm start --prefix ../client",
+    "server-dev": "concurrently -kill-others-on-fail \"npm run dev\" \"npm run client\""
+  },
+
+npm i concurrently -D //--save-dev
+
+
+npm i react-hot-toast
+
+socket.io
+client: socket.io-client
+server: socket.io
+Các bước: 
+1. thiết lập kết nối từ client -> server
+2. 1 kết nối sẽ được thiết lập bạn sẽ nhận được socketId
+nhờ cái Id đó chúng ta có thể giao tiếp thời gian thực
+
+Event and Callbacks
+để gửi được dữ liệu đó thì cần phát ra 1 sự kiện
+sending - socket.emit(eventname, data, callback)
+receiving - socket.on(eventname, data, callback)
+
+send message from a to all 
+-> client (A) -> server -> client(all)
+send message from A to B
+mở 1 cổng socket
+cho phép tất các người tham gia vào thông qua 1 cái room
+socket.emit('room', id);
+bên server nó sẽ join id đó vào  bằng cách socket.join(id)
+client gửi lên 1 cái dữ liệu thì server nhận được và biết nó sẽ gửi cho B
+sau đó nó sẽ gửi lại cho B thông qua io.to(B).emit('new',{text,sender})
+
+emoji picker react
+
+npm uninstall cloudinary
+npm i cloudinary@^1.21.0
+npm i multer-storage-cloudinary
+
+
+npm i nodemailer
+npm i nodemailer-express-handlebars
+npm i cryptr
+npm install crypto-js
